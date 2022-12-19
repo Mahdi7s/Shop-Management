@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:win="clr-namespace:System.Windows;assembly=PresentationCore"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--                 Layout               -->
+    <win:FlowDirection x:Key="MLDirection">LeftToRight</win:FlowDirection>
+    
+    <!--                 Shell                 -->
+    <sys:String x:Key="MLEdit">Edit</sys:String>
+    <sys:String x:Key="MLTitle">Store Manager</sys:String>
+
+    <!--             StartupDialog              -->
+    <sys:String x:Key="MLPassword">Password : </sys:String>
+    <sys:String x:Key="MLID">ID : </sys:String>
+    <sys:String x:Key="MLOptions">Options</sys:String>
+    <sys:String x:Key="MLOk">OK</sys:String>
+    <sys:String x:Key="MLCancel">Cancel</sys:String>
+</ResourceDictionary>

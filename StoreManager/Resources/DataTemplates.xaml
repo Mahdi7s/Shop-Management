@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ColorsAndBrushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="GButtonTemplate" TargetType="{x:Type Button}">
+        <ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="ButtonBase.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GButtonBorder" Duration="0:0:0.01" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="ButtonBase.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To=".75" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GButtonBorder" Duration="0:0:0.01" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="ButtonBase.PreviewMouseLeftButtonDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To=".5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GButtonBorder" Duration="0:0:0.01" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="ButtonBase.PreviewMouseLeftButtonUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GButtonBorder" Duration="0:0:0.01" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+        <Border x:Name="GButtonBorder" Opacity=".75" Padding="6" CornerRadius="15" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                 Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderThumbTemplate" TargetType="{x:Type Thumb}">
+        <Ellipse Width="15" Height="15" Fill="{StaticResource SliderThumbBrush}" />
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="ScrollThumbTemplate" TargetType="{x:Type Thumb}">
+        <Rectangle Fill="{StaticResource ScrollThumbBrush}" RadiusX="9" RadiusY="9" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderTemplate" TargetType="{x:Type Slider}">
+        <Grid>
+            <Border Height="6" Background="{StaticResource GSliderBrush}" BorderBrush="Blue" BorderThickness="0" CornerRadius="4" />
+            <Track x:Name="PART_Track">
+                <Track.Thumb>
+                    <Thumb Template="{StaticResource SliderThumbTemplate}" />
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <DataTemplate x:Key="SimpleSearchDT">
+        <TextBlock Text="{Binding PersianName}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="FontDT">
+        <TextBlock FontFamily="{Binding}" Text="{Binding Source}" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="OpenMenuHeaderTemplate">
+        <Border Background="{StaticResource GoldenBrush}" CornerRadius="9" BorderBrush="Blue" BorderThickness="2" Padding="2" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" Text="{Binding}" Margin="0,0,4,0" />
+                <Image Width="10" Height="10" Source="\Images\menu.png" />
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="TabHeader">
+        <Grid>
+            <Rectangle RadiusX="6" RadiusY="6" Fill="{StaticResource HeaderBrush}" />
+            <TextBlock Text="{Binding}" Margin="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="MenuHeaderTemplate">
+        <Border BorderThickness="0" Background="{StaticResource HeaderBrush}" Padding="5" CornerRadius="9">
+            <TextBlock Text="{Binding}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+    </DataTemplate>
+    
+    <ControlTemplate TargetType="{x:Type TextBox}" x:Key="StatusTemplate">
+        <TextBlock Text="{TemplateBinding Text}" FontWeight="Bold" Foreground="{TemplateBinding Foreground}" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid>
+            <Border CornerRadius="9" Background="#55000000" />
+            <Track x:Name="PART_Track" IsDirectionReversed="True">
+                <Track.Thumb>
+                    <Thumb Template="{StaticResource ScrollThumbTemplate}" />
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid>
+            <Border CornerRadius="9" Background="#55000000" />
+            <Track x:Name="PART_Track" IsDirectionReversed="False">
+                <Track.Thumb>
+                    <Thumb Template="{StaticResource ScrollThumbTemplate}" />
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <DataTemplate x:Key="GridColumn" >
+        <Border BorderBrush="Black" CornerRadius="3" Background="{StaticResource HeaderBrush}">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding}" Foreground="White" />
+        </Border>
+    </DataTemplate>
+    
+</ResourceDictionary>

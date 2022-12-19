@@ -1,0 +1,45 @@
+﻿<Window x:Class="StoreManager.Views.Dialogs.AboutDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="درباره مدیریت فروشگاه" MinWidth="420"
+    FlowDirection="RightToLeft" ShowInTaskbar="False"
+    SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.RowSpan="6">
+            <Image Stretch="Fill" Source="\Images\MVW-img.png" />
+        </Viewbox>
+
+        <Label Content="نام برنامه :" Grid.Column="1" />
+        <TextBlock Grid.Column="2" Text="{Binding AssemblyProduct}" />
+        
+        <Label Content="نسخه :" Grid.Row="1" Grid.Column="1" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding AssemblyVersion}" />
+        
+        <Label Content="حق تکثیر :" Grid.Row="2" Grid.Column="1" />
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding AssemblyCopyright}" />
+        
+        <Label Content="نام شرکت :" Grid.Row="3" Grid.Column="1" />
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding AssemblyCompany}" />
+        
+        <TextBlock Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Grid.ColumnSpan="2">
+            <Bold>تماس با من :<Hyperlink Click="MailToMe_Click">M_Virtual_World@yahoo.com</Hyperlink></Bold>
+        </TextBlock>
+        
+        <Button Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" Width="40" IsDefault="True" Click="Button_Click" Content="تائید" />
+    </Grid>
+</Window>

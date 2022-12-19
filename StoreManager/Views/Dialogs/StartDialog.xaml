@@ -1,0 +1,33 @@
+﻿<Window x:Class="StoreManager.Views.Dialogs.StartDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    WindowStyle="None" WindowStartupLocation="CenterScreen"
+    SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+    FocusManager.FocusedElement="{Binding ElementName=txtID}">
+    
+    <DockPanel Margin="5" ButtonBase.Click="DockPanel_Click">
+        <Border DockPanel.Dock="Bottom" Margin="0,5,0,0" CornerRadius="20" BorderBrush="Black" Background="Silver" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnEditCnStr" Content="{DynamicResource MLOptions}" />
+                <Button x:Name="btnOK" IsDefault="True" Content="{DynamicResource MLOk}" />
+                <Button x:Name="btnCancel" IsCancel="True" Content="{DynamicResource MLCancel}" />
+            </StackPanel>
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Content="{DynamicResource MLID}" Target="{Binding ElementName=txtID}" />
+            <TextBox x:Name="txtID" Grid.Column="1" Text="{Binding Path=ID, Converter={StaticResource MyNumberConverter}}" />
+
+            <Label Content="{DynamicResource MLPassword}" Grid.Row="1" Target="{Binding ElementName=txtPassword}" />
+            <PasswordBox x:Name="txtPassword" Grid.Row="1" Grid.Column="1" />
+        </Grid>
+    </DockPanel>
+</Window>

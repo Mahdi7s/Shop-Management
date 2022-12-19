@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="StoreManager.UserControls.EditingTables"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" FlowDirection="RightToLeft">
+    <WrapPanel x:Name="Panel" Orientation="Vertical">
+        <GroupBox x:Name="grpProducts">
+            <GroupBox.Header>
+                <Border Style="{StaticResource GroupBoxHeader}">
+                    <TextBlock Text="کالاهای موجود" />
+                </Border>
+            </GroupBox.Header>
+            <Button x:Name="btnAddProduct" Content="اضافه کردن کالای جدید" />
+        </GroupBox>
+        <GroupBox x:Name="grpSuppliers">
+            <GroupBox.Header>
+                <Border Style="{StaticResource GroupBoxHeader}">
+                    <TextBlock Text="فروشندگان" />
+                </Border>
+            </GroupBox.Header>
+            <Button x:Name="btnAddSuppliers" Content="اضافه کردن فروشنده جدید" />
+        </GroupBox>
+        <GroupBox x:Name="grpCustomers">
+            <GroupBox.Header>
+                <Border Style="{StaticResource GroupBoxHeader}">
+                    <TextBlock Text="خریداران" />
+                </Border>
+            </GroupBox.Header>
+            <Button x:Name="btnAddCustomer" Content="اضافه کردن خریدار جدید" />
+        </GroupBox>
+        <GroupBox x:Name="grpSoldProductds">
+            <GroupBox.Header>
+                <Border Style="{StaticResource GroupBoxHeader}">
+                    <TextBlock Text="کالاهای فروخته شده" />
+                </Border>
+            </GroupBox.Header>
+            <Button x:Name="btnAddSold" Content="ثبت خرید" />
+        </GroupBox>
+        <GroupBox x:Name="grpCategories">
+            <GroupBox.Header>
+                <Border Style="{StaticResource GroupBoxHeader}">
+                    <TextBlock Text="مقوله ها" />
+                </Border>
+            </GroupBox.Header>
+            <Button x:Name="btnAddCategory" Content="اضافه کردن مقوله" />
+        </GroupBox>
+    </WrapPanel>
+</UserControl>

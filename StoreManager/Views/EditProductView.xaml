@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="StoreManager.Views.EditProductView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="5">
+        <Border DockPanel.Dock="Bottom" HorizontalAlignment="Right" Style="{StaticResource SelectBorder}">
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnSave" Content="ذخیره" Click="btnSave_Click" />
+                <Button x:Name="btnDelete" Content="حذف" Click="btnDelete_Click" />
+                <Button x:Name="btnClose" Content="بستن" Click="btnClose_Click" />
+            </WrapPanel>
+        </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <GroupBox x:Name="PrintVisual">
+                <GroupBox.Header>
+                    <Border Style="{StaticResource GroupBoxHeader}">
+                        <TextBlock Text="کالا" />
+                    </Border>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="_شماره ی کالا :" Target="{Binding ElementName=txtProductID}" />
+                    <TextBox x:Name="txtProductID" Grid.Column="1" Text="{Binding Path=Product.ProductID, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Grid.Row="1" Content="_نام کالا :" Target="{Binding ElementName=txtProductName}" />
+                    <TextBox x:Name="txtProductName" Grid.Row="1" Grid.Column="1" Text="{Binding Product.ProductName,ValidatesOnDataErrors=True}" />
+
+                    <Label Grid.Row="2" Content="_مقوله ی کالا :" Target="{Binding ElementName=cmbCategoryID}" />
+                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cmbCategoryID" ItemsSource="{Binding Categories}" DisplayMemberPath="CategoryName" SelectedValue="{Binding Product.CategoryID}" SelectedValuePath="CategoryID" />
+
+                    <Label Grid.Row="3" Content="_تعداد کالا :" Target="{Binding ElementName=txtProductCount}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtProductCount" Text="{Binding Path=Product.ProductCount, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Grid.Row="4" Content="_قیمت کالا :" Target="{Binding ElementName=txtProductPrice}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtProductPrice" Text="{Binding Path=Product.ProductPrice, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Grid.Row="5" Grid.RowSpan="2" Content="تو_ضیحات :" Target="{Binding ElementName=txtDescription}" />
+                    <TextBox Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="1" x:Name="txtDescription" VerticalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Product.Description}" />
+                </Grid>
+            </GroupBox>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

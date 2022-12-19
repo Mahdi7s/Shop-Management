@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="StoreManager.Views.ProductsListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="ProductsSource" Source="{Binding Products}">
+            <CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="ProductID" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    
+    <DockPanel Margin="5">
+        <Border DockPanel.Dock="Bottom" Style="{StaticResource SelectBorder}" Padding="5">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="تعداد ردیف ها (" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding Products.Count}" />
+                <TextBlock VerticalAlignment="Center" Text=")" />
+                <Button Click="Close_Click" Content="بستن" />
+            </StackPanel>
+        </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ListView x:Name="PrintVisual" Margin="4,6" ItemsSource="{Binding Source={StaticResource ProductsSource}}">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="نتیجه جستجوی کالاها" >
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="+" HorizontalAlignment="Left" Click="Open_Click" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="شماره کالا" DisplayMemberBinding="{Binding ProductID}" />
+                        <GridViewColumn Header="نام کالا" DisplayMemberBinding="{Binding ProductName}" />
+                        <GridViewColumn Header="شماره مقوله" DisplayMemberBinding="{Binding CategoryID}" />
+                        <GridViewColumn Header="تعداد کالا" DisplayMemberBinding="{Binding ProductCount}" />
+                        <GridViewColumn Header="قیمت کالا" DisplayMemberBinding="{Binding ProductPrice}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

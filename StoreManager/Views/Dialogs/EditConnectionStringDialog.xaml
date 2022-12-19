@@ -1,0 +1,11 @@
+﻿<Window x:Class="StoreManager.Views.Dialogs.EditConnectionStringDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="تنظیم رشته اتصال" FlowDirection="RightToLeft" SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+    FocusManager.FocusedElement="{Binding ElementName=txtCnStr}">
+    <DockPanel Margin="5">
+        <Button DockPanel.Dock="Bottom" IsDefault="True" HorizontalAlignment="Center" Width="50" Content="تائید" Click="Button_Click" />
+        <TextBox x:Name="txtCnStr" FlowDirection="LeftToRight" Text="{Binding ConnectionString}" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" />
+    </DockPanel>
+</Window>

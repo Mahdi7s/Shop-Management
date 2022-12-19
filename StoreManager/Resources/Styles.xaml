@@ -1,0 +1,170 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ColorsAndBrushes.xaml" />
+        <ResourceDictionary Source="DataTemplates.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="BaseStyle" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="#10000000" />
+    </Style>
+    
+    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource BaseStyle}" >
+        <Setter Property="FlowDirection" Value="{DynamicResource MLDirection}" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Template" Value="{StaticResource GButtonTemplate}" />
+        <Setter Property="Background" Value="{StaticResource GButtonBackground}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="TextBlock.Foreground" Value="Black" />
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="SelectBorder" >
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Background" Value="Silver" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+
+    <Style TargetType="{x:Type GroupBox}">
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Margin" Value="4" />
+    </Style>
+
+    <Style x:Key="GroupBoxHeader" TargetType="{x:Type Border}">
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="TextBlock.Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Background" Value="{StaticResource HeaderBrush}" />
+    </Style>
+
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type ToolBarTray}" >
+        <Setter Property="Background" Value="{StaticResource ToolBarBrush}" />
+    </Style>
+    
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource BaseStyle}" />
+    
+    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource BaseStyle}" >
+        <Setter Property="Margin" Value="0,10,5,30" />
+        <Setter Property="BorderThickness" Value="0,2,2,2" />
+        <Setter Property="BorderBrush" Value="Black" />
+    </Style>
+
+    <Style TargetType="{x:Type PasswordBox}">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="HeaderTemplate" Value="{StaticResource MenuHeaderTemplate}" />
+    </Style>
+
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="Black" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    
+    <Style TargetType="{x:Type Slider}">
+        <Setter Property="Template" Value="{StaticResource SliderTemplate}" />
+    </Style>
+    
+    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="LayoutTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="{Binding ElementName=ZoomSlider, Path=Value}" ScaleY="{Binding ElementName=ZoomSlider, Path=Value}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type TabItem}" >
+        <Setter Property="HeaderTemplate" Value="{StaticResource TabHeader}" />
+    </Style>
+    
+    <Style x:Key="StatusStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template" Value="{StaticResource StatusTemplate}" />
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="TextBox.TextChanged">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimationUsingKeyFrames Duration="10" Storyboard.TargetProperty="Foreground.Color" >
+                            <LinearColorKeyFrame KeyTime="00:00:03" Value="Red" />
+                            <LinearColorKeyFrame KeyTime="00:00:06" Value="Green" />
+                            <LinearColorKeyFrame KeyTime="00:00:09" Value="Yellow" />
+                            <LinearColorKeyFrame KeyTime="00:00:10" Value="Transparent" />
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard> 
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="ImageViewBox" TargetType="{x:Type Border}" >
+        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="#AB000000" />
+        <Setter Property="Background" Value="WhiteSmoke" />
+    </Style>
+
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Height" Value="18" />
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical" >
+                <Setter Property="Width" Value="18" />
+                <Setter Property="Height" Value="Auto" />
+                <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="{x:Type GridView}">
+        <Setter Property="ColumnHeaderTemplate" Value="{StaticResource GridColumn}" />
+    </Style>
+
+</ResourceDictionary>

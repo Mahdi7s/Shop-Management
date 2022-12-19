@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="StoreManager.Views.EditCategoryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <DockPanel ButtonBase.Click="DockPanel_Click" Margin="5">
+        <Border DockPanel.Dock="Bottom" HorizontalAlignment="Right" Style="{StaticResource SelectBorder}">
+            <WrapPanel Orientation="Horizontal">
+                <Button x:Name="btnSave" Content="ذخیره" />
+                <Button x:Name="btnDelete" Content="حذف" />
+                <Button x:Name="btnClose" Content="بستن" />
+            </WrapPanel>
+        </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <GroupBox x:Name="PrintVisual">
+                <GroupBox.Header>
+                    <Border Style="{StaticResource GroupBoxHeader}">
+                        <TextBlock Text="مقوله کالا" />
+                    </Border>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.RowSpan="2" Style="{StaticResource ImageViewBox}" />
+                    <Viewbox Grid.RowSpan="2" Height="120" Width="90" Margin="5">
+                        <Image x:Name="CategoryPic" Stretch="Fill" Source="{Binding Category.Picture}" />
+                    </Viewbox>
+                    <Button x:Name="btnChangeImage" HorizontalAlignment="Right" ToolTip="انتخاب عکس" VerticalAlignment="Top" Margin="0,8,8,0" Content="+" />
+
+                    <Label Grid.Column="1" Content="_شماره ی مقوله :" Target="{Binding ElementName=txtCategoryID}" />
+                    <TextBox Grid.Column="2" x:Name="txtCategoryID" Text="{Binding Path=Category.CategoryID, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Grid.Row="1" Grid.Column="1" Content="_نام مقوله :" Target="{Binding ElementName=txtCategoryName}" />
+                    <TextBox Grid.Row="1" Grid.Column="2" x:Name="txtCategoryName" Text="{Binding Category.CategoryName}" />
+
+                    <Label Grid.Row="2" Content="_توضیحات :" Target="{Binding ElementName=txtDescription}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True" x:Name="txtDescription" Text="{Binding Category.Description}" />
+                </Grid>
+            </GroupBox>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

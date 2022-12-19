@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="StoreManager.Views.EditSupplierView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:uc="clr-namespace:StoreManager.UserControls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel ButtonBase.Click="DockPanel_Click" Margin="5">
+        <Border DockPanel.Dock="Bottom" HorizontalAlignment="Right" Style="{StaticResource SelectBorder}">
+            <WrapPanel Orientation="Horizontal">
+                <Button x:Name="btnSave" Content="ذخیره" />
+                <Button x:Name="btnDelete" Content="حذف" />
+                <Button x:Name="btnClose" Content="بستن" />
+            </WrapPanel>
+        </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <GroupBox x:Name="PrintVisual">
+                <GroupBox.Header>
+                    <Border Style="{StaticResource GroupBoxHeader}">
+                        <TextBlock Text="فروشنده" />
+                    </Border>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Label Content="شماره ی _فروشنده :" Target="{Binding ElementName=txtSupplierID}" />
+                    <TextBox x:Name="txtSuppliers" Grid.Column="1" Text="{Binding Path=Supplier.SupplierID, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Content="و_ضعیت :" Grid.Column="2" Target="{Binding ElementName=cmbState}" />
+                    <ComboBox x:Name="cmbState" Grid.Column="3" ItemsSource="{Binding Source={StaticResource States}}" SelectedItem="{Binding Supplier.State}" />
+
+                    <Label Content="نام _شرکت :" Target="{Binding ElementName=txtCompanyName}" Grid.Row="1" />
+                    <TextBox x:Name="txtCompanyName" Grid.Row="1" Grid.Column="1" Text="{Binding Supplier.CompanyName}" />
+
+                    <Label Content="_نام فروشنده :" Grid.Row="1" Grid.Column="2" Target="{Binding ElementName=txtContactName}" />
+                    <TextBox x:Name="txtContactName" Grid.Row="1" Grid.Column="3" Text="{Binding Supplier.ContactName}" />
+
+                    <Label Content="_آدرس منزل :" Grid.Row="2" Target="{Binding ElementName=txtAddress}" />
+                    <TextBox x:Name="txtAddress" Grid.Row="2" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Supplier.Address}" />
+
+                    <Label Content="_شهر :" Grid.Row="3" Target="{Binding ElementName=txtCity}" />
+                    <TextBox x:Name="txtCity" Grid.Row="3" Grid.Column="1" Text="{Binding Supplier.City}" />
+
+                    <Label Content="_منطقه :" Grid.Row="3" Grid.Column="2" Target="{Binding ElementName=txtRegion}" />
+                    <TextBox x:Name="txtRegion" Grid.Row="3" Grid.Column="3" Text="{Binding Supplier.Region}" />
+
+                    <Label Content="کد _پستی :" Grid.Row="4" Target="{Binding ElementName=txtPostalCode}" />
+                    <TextBox x:Name="txtPostalCode" Grid.Row="4" Grid.Column="1" Text="{Binding Supplier.PostalCode}" />
+
+                    <Label Content="_کشور :" Grid.Row="4" Grid.Column="2" Target="{Binding ElementName=txtCountry}" />
+                    <TextBox x:Name="txtCountry" Grid.Row="4" Grid.Column="3" Text="{Binding Supplier.Country}" />
+
+                    <Label Content="ت_لفن :" Grid.Row="5" Target="{Binding ElementName=txtPhone}" />
+                    <TextBox x:Name="txtPhone" Grid.Row="5" Grid.Column="1" Text="{Binding Path=Supplier.Phone, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Content="_فکس :" Grid.Row="5" Grid.Column="2" Target="{Binding ElementName=txtFax}" />
+                    <TextBox x:Name="txtFax" Grid.Row="5" Grid.Column="3" Text="{Binding Path=Supplier.Fax, Converter={StaticResource MyNumberConverter}}" />
+                    
+                    <uc:EditSupplierPassword x:Name="PasswordGeter" Grid.Row="6" Grid.ColumnSpan="4" HorizontalAlignment="Center" />
+                    
+                    <Label Content="_توضیحات :" Grid.Row="7" Target="{Binding ElementName=txtDescription}" />
+                    <TextBox x:Name="txtDescription" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Supplier.Description}" />
+                </Grid>
+            </GroupBox>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

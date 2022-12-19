@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="StoreManager.Views.EditCustomerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel ButtonBase.Click="DockPanel_Click" Margin="5">
+        <Border DockPanel.Dock="Bottom" HorizontalAlignment="Right" Style="{StaticResource SelectBorder}">
+            <WrapPanel Orientation="Horizontal">
+                <Button x:Name="btnSave" Content="ذخیره" />
+                <Button x:Name="btnDelete" Content="حذف" />
+                <Button x:Name="btnClose" Content="بستن" />
+            </WrapPanel>
+        </Border>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <GroupBox x:Name="PrintVisual">
+                <GroupBox.Header>
+                    <Border Style="{StaticResource GroupBoxHeader}">
+                        <TextBlock Text="خریدار" />
+                    </Border>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Label Content="شماره ی _خریدار :" Target="{Binding ElementName=txtCustomerID}" />
+                    <TextBox x:Name="txtCustomerID" Grid.Column="1" Text="{Binding Path=Customer.CustomerID, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Content="نام شر_کت :" Grid.Column="2" Target="{Binding ElementName=txtCompanyName}" />
+                    <TextBox x:Name="txtCompanyName" Grid.Column="3" Text="{Binding Customer.CompanyName}" />
+
+                    <Label Content="_نام خریدار :" Grid.Row="1" Target="{Binding ElementName=txtContactName}" />
+                    <TextBox x:Name="txtContactName" Grid.Row="1" Grid.Column="1" Text="{Binding Customer.ContactName}" />
+
+                    <Label Content="_شهر :" Grid.Row="1" Grid.Column="2" Target="{Binding ElementName=txtCity}" />
+                    <TextBox x:Name="txtCity" Grid.Row="1" Grid.Column="3" Text="{Binding Customer.City}" />
+
+                    <Label Content="_آدرس :" Grid.Row="2" Target="{Binding ElementName=txtAddress}" />
+                    <TextBox x:Name="txtAddress" Grid.Row="2" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Customer.Address}" />
+
+                    <Label Content="_منطقه :" Grid.Row="3" Target="{Binding ElementName=txtRegion}" />
+                    <TextBox x:Name="txtRegion" Grid.Row="3" Grid.Column="1" Text="{Binding Customer.Region}" />
+
+                    <Label Content="کد _پستی :" Grid.Row="3" Grid.Column="2" Target="{Binding ElementName=txtPostalCode}" />
+                    <TextBox x:Name="txtPostalCode" Grid.Row="3" Grid.Column="3" Text="{Binding Customer.PostalCode}" />
+
+                    <Label Content="کش_ور :" Grid.Row="4" Target="{Binding ElementName=txtCountry}" />
+                    <TextBox x:Name="txtCountry" Grid.Row="4" Grid.Column="1" Text="{Binding Customer.Country}" />
+
+                    <Label Content="_تلفن :" Grid.Row="4" Grid.Column="2" Target="{Binding ElementName=txtPhone}" />
+                    <TextBox x:Name="txtPhone" Grid.Row="4" Grid.Column="3" Text="{Binding Path=Customer.Phone, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Content="_فکس :" Grid.Row="5" Target="{Binding ElementName=txtFax}" />
+                    <TextBox x:Name="txtFax" Grid.Row="5" Grid.Column="1" Text="{Binding Path=Customer.Fax, Converter={StaticResource MyNumberConverter}}" />
+
+                    <Label Content="تو_ضیحات :" Grid.Row="6" Target="{Binding ElementName=txtDescription}" />
+                    <TextBox x:Name="txtDescription" Grid.Row="6" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Customer.Description}" />
+                </Grid>
+            </GroupBox>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
